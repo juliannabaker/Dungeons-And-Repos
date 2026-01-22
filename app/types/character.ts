@@ -11,7 +11,8 @@ export type CharacterColor = 'red' | 'blue' | 'purple' | 'green' | 'gold' | 'tea
 export interface CharacterAppearance {
   id: string;
   name: string;
-  imageUrl: string; // Placeholder image URL - will be replaced with final art
+  appearanceImageUrl: string; // Image for modal/selection (character-appearance folder)
+  frontImageUrl: string; // Image for homepage display (character-front folder)
 }
 
 export interface Character {
@@ -30,11 +31,15 @@ export interface SelectedCharacter extends Character {
   customName: string;
 }
 
-// Helper function to get character appearance image URLs
-// Images are stored in public/assets/images/ and named by appearance id (e.g., warrior-1.png)
-const getCharacterImage = (appearanceId: string): string => {
-  // In Next.js, files in public folder are served from root
-  return `/assets/images/${appearanceId}.png`;
+// Helper functions to get character image URLs
+// Appearance images are in public/assets/images/character-appearance/
+// Front images are in public/assets/images/character-front/
+const getCharacterAppearanceImage = (appearanceId: string): string => {
+  return `/assets/images/character-appearance/${appearanceId}.png`;
+};
+
+const getCharacterFrontImage = (appearanceId: string): string => {
+  return `/assets/images/character-front/${appearanceId}.png`;
 };
 
 export const characters: Character[] = [
@@ -53,8 +58,8 @@ export const characters: Character[] = [
     emoji: '⚔️',
     color: 'indigo',
     appearances: [
-      { id: 'warrior-1', name: 'Noble Knight', imageUrl: getCharacterImage('warrior-1') },
-      { id: 'warrior-2', name: 'Seasoned Combatant', imageUrl: getCharacterImage('warrior-2') },
+      { id: 'warrior-1', name: 'Noble Knight', appearanceImageUrl: getCharacterAppearanceImage('warrior-1'), frontImageUrl: getCharacterFrontImage('warrior-1') },
+      { id: 'warrior-2', name: 'Seasoned Combatant', appearanceImageUrl: getCharacterAppearanceImage('warrior-2'), frontImageUrl: getCharacterFrontImage('warrior-2') },
     ],
   },
   {
@@ -72,8 +77,8 @@ export const characters: Character[] = [
     emoji: '🔮',
     color: 'blue',
     appearances: [
-      { id: 'mage-1', name: 'Arcane Scholar', imageUrl: getCharacterImage('mage-1') },
-      { id: 'mage-2', name: 'Mystic Wanderer', imageUrl: getCharacterImage('mage-2') },
+      { id: 'mage-1', name: 'Arcane Scholar', appearanceImageUrl: getCharacterAppearanceImage('mage-1'), frontImageUrl: getCharacterFrontImage('mage-1') },
+      { id: 'mage-2', name: 'Mystic Wanderer', appearanceImageUrl: getCharacterAppearanceImage('mage-2'), frontImageUrl: getCharacterFrontImage('mage-2') },
     ],
   },
   {
@@ -91,8 +96,8 @@ export const characters: Character[] = [
     emoji: '🗡️',
     color: 'purple',
     appearances: [
-      { id: 'rogue-1', name: 'Shadow Assassin', imageUrl: getCharacterImage('rogue-1') },
-      { id: 'rogue-2', name: 'Master Thief', imageUrl: getCharacterImage('rogue-2') },
+      { id: 'rogue-1', name: 'Shadow Assassin', appearanceImageUrl: getCharacterAppearanceImage('rogue-1'), frontImageUrl: getCharacterFrontImage('rogue-1') },
+      { id: 'rogue-2', name: 'Master Thief', appearanceImageUrl: getCharacterAppearanceImage('rogue-2'), frontImageUrl: getCharacterFrontImage('rogue-2') },
     ],
   },
   // ============================================

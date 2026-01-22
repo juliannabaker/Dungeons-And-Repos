@@ -61,7 +61,7 @@ export default function FantasyBackground() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/assets/images/background-1.png"
+          src="/assets/images/backgrounds/background-1.png"
           alt="Fantasy Background"
           fill
           className="object-cover"

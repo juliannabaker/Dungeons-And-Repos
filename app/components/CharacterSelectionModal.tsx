@@ -238,7 +238,7 @@ export default function CharacterSelectionModal({
             characterClass={selectedCharacterType.class}
             onNameChange={handleNameChange}
             initialName={customName}
-            selectedAppearanceImageUrl={selectedAppearance?.imageUrl}
+            selectedAppearanceImageUrl={selectedAppearance?.appearanceImageUrl}
           />
         )}
       </div>

@@ -40,7 +40,7 @@ export default function AppearanceSelection({
               {/* Character Image */}
               <div className="relative w-full aspect-[2/3] mb-4 rounded-lg overflow-hidden bg-slate-900/50 flex items-center justify-center">
                 <Image
-                  src={appearance.imageUrl}
+                  src={appearance.appearanceImageUrl}
                   alt={appearance.name}
                   fill
                   className="object-contain"

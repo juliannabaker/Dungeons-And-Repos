@@ -50,60 +50,65 @@ export default function Home() {
             <div>
             </div>
 
-          {/* DnD Story Description - Compact */}
-          <div className="max-w-2xl mx-auto mt-4 px-4">
-            <div className="border-l-2 border-purple-500/30 px-4 py-3 rounded-r-lg bg-slate-950/70 backdrop-blur-md border-r border-t border-b border-purple-500/20">
-              <p className="text-xs md:text-sm font-light leading-relaxed text-gray-200/90 italic mb-2">
-                In the shadowed realm where code meets legend, you stand at the threshold of an extraordinary quest.
-                The ancient repositories hold secrets untold, guarded by digital dragons and mystical algorithms.
-                Your journey begins not with a sword, but with a choice—a hero to guide you through the labyrinthine
-                dungeons of development.
-              </p>
-              <p className="text-xs md:text-sm font-light leading-relaxed text-gray-200/90 italic">
-                Three paths await: the <span className="text-rose-300 font-normal">Warrior</span> with unyielding strength,
-                the <span className="text-indigo-300 font-normal">Mage</span> wielding arcane mastery,
-                and the <span className="text-violet-300 font-normal">Rogue</span> moving through shadows with unmatched precision.
-                Choose wisely, for your companion will shape the path ahead in this realm where every commit is a spell,
-                every pull request a quest, and every merge a battle won.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Character Display Area */}
-        <div className="w-full flex-1 flex items-center justify-center min-h-0">
-          {selectedCharacter ? (
-            <CharacterDisplay character={selectedCharacter} />
-          ) : (
-            <div className="text-center animate-fade-in px-6 py-4 rounded-lg bg-slate-950/70 backdrop-blur-md border border-purple-500/20">
-              <p className="text-xl md:text-2xl font-light tracking-wider text-purple-50/90 mb-2 uppercase">
-                No hero chosen
-              </p>
-              <p className="text-xs font-light text-gray-300/80 tracking-[0.2em] uppercase mb-4">
-                Select your mysterious companion
-              </p>
-              {/* Whimsical decorative dots */}
-              <div className="flex justify-center gap-2 mt-3">
-                <div className="w-1 h-1 bg-purple-400/60 rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-violet-400/60 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                <div className="w-1 h-1 bg-indigo-400/60 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+          {/* DnD Story Description - Compact - Only show when no character selected */}
+          {!selectedCharacter && (
+            <div className="max-w-2xl mx-auto mt-4 px-4">
+              <div className="border-l-2 border-purple-500/30 px-4 py-3 rounded-r-lg bg-slate-950/70 backdrop-blur-md border-r border-t border-b border-purple-500/20">
+                <p className="text-xs md:text-sm font-light leading-relaxed text-gray-200/90 italic mb-2">
+                  In the shadowed realm where code meets legend, you stand at the threshold of an extraordinary quest.
+                  The ancient repositories hold secrets untold, guarded by digital dragons and mystical algorithms.
+                  Your journey begins not with a sword, but with a choice—a hero to guide you through the labyrinthine
+                  dungeons of development.
+                </p>
+                <p className="text-xs md:text-sm font-light leading-relaxed text-gray-200/90 italic">
+                  Three paths await: the <span className="text-rose-300 font-normal">Warrior</span> with unyielding strength,
+                  the <span className="text-indigo-300 font-normal">Mage</span> wielding arcane mastery,
+                  and the <span className="text-violet-300 font-normal">Rogue</span> moving through shadows with unmatched precision.
+                  Choose wisely, for your companion will shape the path ahead in this realm where every commit is a spell,
+                  every pull request a quest, and every merge a battle won.
+                </p>
               </div>
             </div>
           )}
         </div>
 
-        {/* Elegant Action Buttons - Vogue style */}
-        <div className="mt-4">
-          <ButtonGroup align="center" direction="row">
-            <Button variant="primary" onClick={handleOpenModal}>
-              {selectedCharacter ? 'Change Hero' : 'Select Hero'}
-            </Button>
-            {selectedCharacter && (
-              <Button variant="secondary" onClick={() => setSelectedCharacter(null)}>
-                Clear
-              </Button>
-            )}
-          </ButtonGroup>
+        {/* Character Display Area */}
+        <div className="w-full flex-1 flex flex-col items-center justify-start min-h-0 overflow-hidden">
+          {selectedCharacter ? (
+            <div className="w-full flex-1 flex flex-col">
+              <CharacterDisplay 
+                character={selectedCharacter}
+                onChangeHero={handleOpenModal}
+                onClear={() => setSelectedCharacter(null)}
+              />
+            </div>
+          ) : (
+            <div className="flex-1 flex flex-col items-center justify-center">
+              <div className="text-center animate-fade-in px-6 py-4 rounded-lg bg-slate-950/70 backdrop-blur-md border border-purple-500/20 mb-6">
+                <p className="text-xl md:text-2xl font-light tracking-wider text-purple-50/90 mb-2 uppercase">
+                  No hero chosen
+                </p>
+                <p className="text-xs font-light text-gray-300/80 tracking-[0.2em] uppercase mb-4">
+                  Select your mysterious companion
+                </p>
+                {/* Whimsical decorative dots */}
+                <div className="flex justify-center gap-2 mt-3">
+                  <div className="w-1 h-1 bg-purple-400/60 rounded-full animate-pulse"></div>
+                  <div className="w-1 h-1 bg-violet-400/60 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-1 h-1 bg-indigo-400/60 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                </div>
+              </div>
+              
+              {/* Elegant Action Buttons - Vogue style */}
+              <div className="pt-4 pb-2 w-full">
+                <ButtonGroup align="center" direction="row" className="w-full">
+                  <Button variant="primary" onClick={handleOpenModal}>
+                    Select Hero
+                  </Button>
+                </ButtonGroup>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Character Selection Modal */}
