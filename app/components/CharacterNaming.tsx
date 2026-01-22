@@ -49,7 +49,7 @@ export default function CharacterNaming({
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center mb-8">
-        <h3 className="text-2xl md:text-3xl font-light tracking-wider text-amber-50/90 uppercase mb-2">
+        <h3 className="text-2xl md:text-3xl font-light tracking-wider text-purple-50/90 uppercase mb-2">
           Name Your Hero
         </h3>
         <p className="text-sm font-light text-gray-400/70 tracking-[0.2em] uppercase">
@@ -75,15 +75,15 @@ export default function CharacterNaming({
             maxLength={MAX_NAME_LENGTH}
             className={`
               w-full px-4 py-3 rounded-sm border bg-slate-950/50 backdrop-blur-sm
-              text-amber-50/90 font-light tracking-wide
+              text-purple-50/90 font-light tracking-wide
               placeholder:text-gray-500/50
               transition-all duration-300
-              focus:outline-none focus:ring-2 focus:ring-amber-500/50
+              focus:outline-none focus:ring-2 focus:ring-purple-500/50
               ${error 
                 ? 'border-rose-500/50 focus:border-rose-500/80' 
                 : isValid 
-                  ? 'border-amber-500/50 focus:border-amber-500/80' 
-                  : 'border-gray-500/30 focus:border-amber-500/50'
+                  ? 'border-purple-500/50 focus:border-purple-500/80' 
+                  : 'border-gray-500/30 focus:border-purple-500/50'
               }
             `}
             autoFocus
@@ -95,7 +95,7 @@ export default function CharacterNaming({
               {error ? (
                 <span className="text-rose-400/80">{error}</span>
               ) : (
-                <span className={isValid ? 'text-amber-400/60' : 'text-gray-400/60'}>
+                <span className={isValid ? 'text-purple-400/60' : 'text-gray-400/60'}>
                   {name.trim().length >= MIN_NAME_LENGTH ? 'Valid name' : `Minimum ${MIN_NAME_LENGTH} characters`}
                 </span>
               )}
@@ -107,12 +107,12 @@ export default function CharacterNaming({
         </div>
 
         {/* Preview */}
-        <div className="pt-4 border-t border-amber-500/20">
+        <div className="pt-4 border-t border-purple-500/20">
           <p className="text-xs font-light text-gray-400/70 tracking-[0.2em] uppercase mb-2">
             Preview
           </p>
-          <div className="px-4 py-3 rounded-sm border border-amber-500/30 bg-slate-950/30">
-            <p className="text-lg font-light tracking-wider text-amber-50/90">
+          <div className="px-4 py-3 rounded-sm border border-purple-500/30 bg-slate-950/30">
+            <p className="text-lg font-light tracking-wider text-purple-50/90">
               {name.trim() || defaultName}
             </p>
             <p className="text-sm font-light text-purple-300/70 tracking-[0.2em] uppercase mt-1">

@@ -40,7 +40,7 @@ const getCharacterImage = (appearanceId: string): string => {
 export const characters: Character[] = [
   {
     id: 'warrior',
-    name: 'Noble Knight or Battle-Scarred Veteran',
+    name: 'Noble Knight or Seasoned Combatant',
     class: 'Warrior',
     description: 'A mighty warrior with unmatched strength and courage. Masters of melee combat, warriors excel in close-quarters battle and can withstand tremendous damage.',
     attributes: {
@@ -54,7 +54,7 @@ export const characters: Character[] = [
     color: 'red',
     appearances: [
       { id: 'warrior-1', name: 'Noble Knight', imageUrl: getCharacterImage('warrior-1') },
-      { id: 'warrior-2', name: 'Battle-Scarred Veteran', imageUrl: getCharacterImage('warrior-2') },
+      { id: 'warrior-2', name: 'Seasoned Combatant', imageUrl: getCharacterImage('warrior-2') },
     ],
   },
   {

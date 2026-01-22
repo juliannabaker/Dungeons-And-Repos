@@ -132,7 +132,7 @@ export default function CharacterSelectionModal({
                 className={`
                   w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-light transition-all duration-300
                   ${index <= currentStepIndex
-                    ? 'border-amber-500/80 bg-amber-500/20 text-amber-200'
+                    ? 'border-purple-500/80 bg-purple-500/20 text-purple-200'
                     : 'border-gray-500/30 bg-transparent text-gray-400/50'
                   }
                 `}
@@ -143,7 +143,7 @@ export default function CharacterSelectionModal({
                 <div
                   className={`
                     w-12 h-px transition-all duration-300
-                    ${index < currentStepIndex ? 'bg-amber-500/60' : 'bg-gray-500/20'}
+                    ${index < currentStepIndex ? 'bg-purple-500/60' : 'bg-gray-500/20'}
                   `}
                 />
               )}
@@ -151,25 +151,25 @@ export default function CharacterSelectionModal({
           ))}
         </div>
         <div className="flex justify-center gap-4 text-xs font-light text-gray-400/70 tracking-[0.2em] uppercase">
-          <span className={currentStep === 'type' ? 'text-amber-300/90' : ''}>Type</span>
+          <span className={currentStep === 'type' ? 'text-purple-300/90' : ''}>Type</span>
           <span>•</span>
-          <span className={currentStep === 'appearance' ? 'text-amber-300/90' : ''}>Appearance</span>
+          <span className={currentStep === 'appearance' ? 'text-purple-300/90' : ''}>Appearance</span>
           <span>•</span>
-          <span className={currentStep === 'naming' ? 'text-amber-300/90' : ''}>Name</span>
+          <span className={currentStep === 'naming' ? 'text-purple-300/90' : ''}>Name</span>
         </div>
       </div>
 
       {/* Step Header */}
       <div className="text-center mb-10">
         <div className="inline-block mb-4">
-          <div className="h-px w-20 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-4"></div>
-          <h2 className="text-4xl md:text-5xl font-light tracking-[0.15em] mb-3 text-amber-50/90 uppercase">
+          <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-4"></div>
+          <h2 className="text-4xl md:text-5xl font-light tracking-[0.15em] mb-3 text-purple-50/90 uppercase">
             {stepTitle.main}
           </h2>
-          <h2 className="text-4xl md:text-5xl font-light tracking-[0.15em] mb-3 bg-gradient-to-r from-amber-300 via-amber-200 to-amber-300 bg-clip-text text-transparent uppercase">
+          <h2 className="text-4xl md:text-5xl font-light tracking-[0.15em] mb-3 bg-gradient-to-r from-purple-300 via-violet-200 to-purple-300 bg-clip-text text-transparent uppercase">
             {stepTitle.sub}
           </h2>
-          <div className="h-px w-20 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mt-4"></div>
+          <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mt-4"></div>
         </div>
         <p className="text-sm font-light text-gray-400/70 tracking-[0.2em] uppercase mt-6">
           {stepTitle.description}
@@ -212,13 +212,13 @@ export default function CharacterSelectionModal({
       </div>
 
       {/* Action Buttons */}
-      <div className="mt-10 pt-8 border-t border-amber-500/20">
+      <div className="mt-10 pt-8 border-t border-purple-500/20">
         <ButtonGroup align="right" direction="row">
           {currentStep !== 'type' && (
             <Button
               variant="secondary"
               onClick={handleBack}
-              className="border-amber-500/30 text-amber-200/80 hover:bg-amber-500/10 hover:border-amber-500/50"
+              className="border-purple-500/30 text-purple-200/80 hover:bg-purple-500/10 hover:border-purple-500/50"
             >
               Back
             </Button>
@@ -226,7 +226,7 @@ export default function CharacterSelectionModal({
           <Button
             variant="secondary"
             onClick={onClose}
-            className="border-amber-500/30 text-amber-200/80 hover:bg-amber-500/10 hover:border-amber-500/50"
+            className="border-purple-500/30 text-purple-200/80 hover:bg-purple-500/10 hover:border-purple-500/50"
           >
             Cancel
           </Button>
@@ -235,7 +235,7 @@ export default function CharacterSelectionModal({
               variant="primary"
               onClick={handleConfirm}
               disabled={!canProceed}
-              className="bg-gradient-to-r from-amber-600/80 to-amber-500/80 text-slate-950 hover:from-amber-500 hover:to-amber-400 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
+              className="bg-gradient-to-r from-purple-600/80 to-purple-500/80 text-slate-950 hover:from-purple-500 hover:to-purple-400 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
             >
               Begin Journey
             </Button>
@@ -250,7 +250,7 @@ export default function CharacterSelectionModal({
                 }
               }}
               disabled={!canProceed}
-              className="bg-gradient-to-r from-amber-600/80 to-amber-500/80 text-slate-950 hover:from-amber-500 hover:to-amber-400 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
+              className="bg-gradient-to-r from-purple-600/80 to-purple-500/80 text-slate-950 hover:from-purple-500 hover:to-purple-400 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
             >
               Next
             </Button>

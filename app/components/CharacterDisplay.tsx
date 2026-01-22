@@ -21,7 +21,7 @@ export default function CharacterDisplay({ character }: CharacterDisplayProps) {
 
         {/* Character Image */}
         <div className="relative w-48 h-72 md:w-64 md:h-96 mx-auto mb-4">
-          <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-amber-500/30 flex items-center justify-center bg-slate-900/30">
+          <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-purple-500/30 flex items-center justify-center bg-slate-900/30">
             <Image
               src={character.selectedAppearance.imageUrl}
               alt={character.selectedAppearance.name}
@@ -33,17 +33,17 @@ export default function CharacterDisplay({ character }: CharacterDisplayProps) {
         </div>
 
         {/* Whimsical sparkles around character */}
-        <div className="absolute -top-4 -left-4 w-1 h-1 bg-amber-300 rounded-full animate-sparkle-1"></div>
-        <div className="absolute -top-2 -right-6 w-1 h-1 bg-purple-300 rounded-full animate-sparkle-2"></div>
+        <div className="absolute -top-4 -left-4 w-1 h-1 bg-purple-300 rounded-full animate-sparkle-1"></div>
+        <div className="absolute -top-2 -right-6 w-1 h-1 bg-violet-300 rounded-full animate-sparkle-2"></div>
         <div className="absolute -bottom-2 -left-6 w-1 h-1 bg-indigo-300 rounded-full animate-sparkle-3"></div>
-        <div className="absolute -bottom-4 -right-4 w-1 h-1 bg-violet-300 rounded-full animate-sparkle-1"></div>
+        <div className="absolute -bottom-4 -right-4 w-1 h-1 bg-purple-300 rounded-full animate-sparkle-1"></div>
 
         {/* Elegant Character Info Card - Vogue style */}
-        <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-64 rounded-sm border border-amber-500/30 bg-gradient-to-br from-slate-950/95 via-purple-950/90 to-indigo-950/95 backdrop-blur-xl shadow-2xl p-4">
+        <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-64 rounded-sm border border-purple-500/30 bg-gradient-to-br from-slate-950/95 via-purple-950/90 to-indigo-950/95 backdrop-blur-xl shadow-2xl p-4">
           {/* Decorative line */}
-          <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-3"></div>
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-3"></div>
           
-          <h3 className="text-xl font-light tracking-wider text-center mb-1 text-amber-50/90 uppercase">
+          <h3 className="text-xl font-light tracking-wider text-center mb-1 text-purple-50/90 uppercase">
             {character.customName}
           </h3>
           <p className="text-xs font-light text-center text-purple-300/70 tracking-[0.2em] uppercase mb-1">
@@ -53,7 +53,7 @@ export default function CharacterDisplay({ character }: CharacterDisplayProps) {
             {character.selectedAppearance.name}
           </p>
           
-          <div className="flex justify-center gap-3 text-xs border-t border-amber-500/20 pt-4">
+          <div className="flex justify-center gap-3 text-xs border-t border-purple-500/20 pt-4">
             <span className="px-3 py-1.5 border border-rose-500/30 bg-rose-950/30 rounded-sm text-rose-200/90 font-light tracking-wide uppercase text-[10px]">
               STR: {character.attributes.strength}
             </span>

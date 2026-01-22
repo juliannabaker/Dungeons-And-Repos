@@ -38,7 +38,7 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
   };
 
   const selectedClasses = isSelected
-    ? 'ring-2 ring-amber-400/60 ring-offset-2 ring-offset-slate-950 scale-105 shadow-2xl shadow-amber-500/30'
+    ? 'ring-2 ring-purple-400/60 ring-offset-2 ring-offset-slate-950 scale-105 shadow-2xl shadow-purple-500/30'
     : '';
 
   return (
@@ -56,13 +56,13 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
     >
       {/* Mysterious background glow effect */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 to-transparent"></div>
-
+      
       {/* Whimsical sparkle effect when selected */}
       {isSelected && (
         <>
-          <div className="absolute top-2 right-2 w-1 h-1 bg-amber-300 rounded-full animate-sparkle-1"></div>
-          <div className="absolute top-4 left-3 w-1 h-1 bg-amber-200 rounded-full animate-sparkle-2"></div>
-          <div className="absolute bottom-3 right-4 w-1 h-1 bg-amber-300 rounded-full animate-sparkle-3"></div>
+          <div className="absolute top-2 right-2 w-1 h-1 bg-purple-300 rounded-full animate-sparkle-1"></div>
+          <div className="absolute top-4 left-3 w-1 h-1 bg-violet-200 rounded-full animate-sparkle-2"></div>
+          <div className="absolute bottom-3 right-4 w-1 h-1 bg-purple-300 rounded-full animate-sparkle-3"></div>
         </>
       )}
 
@@ -72,7 +72,7 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
       </div>
 
       {/* Character Name - Vogue style typography */}
-      <h3 className="text-xl font-light tracking-wider text-center mb-2 text-amber-50/90 uppercase relative z-10">
+      <h3 className="text-xl font-light tracking-wider text-center mb-2 text-purple-50/90 uppercase relative z-10">
         {character.name}
       </h3>
 
@@ -90,30 +90,30 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
       <div className="space-y-2.5 mt-5 relative z-10 border-t border-white/10 pt-4">
         <div className="flex justify-between items-center text-xs">
           <span className="font-light text-gray-400/80 tracking-wide uppercase text-[10px]">Strength</span>
-          <span className="text-amber-200/90 font-light">{character.attributes.strength}</span>
+          <span className="text-purple-200/90 font-light">{character.attributes.strength}</span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="font-light text-gray-400/80 tracking-wide uppercase text-[10px]">Agility</span>
-          <span className="text-amber-200/90 font-light">{character.attributes.agility}</span>
+          <span className="text-purple-200/90 font-light">{character.attributes.agility}</span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="font-light text-gray-400/80 tracking-wide uppercase text-[10px]">Intelligence</span>
-          <span className="text-amber-200/90 font-light">{character.attributes.intelligence}</span>
+          <span className="text-purple-200/90 font-light">{character.attributes.intelligence}</span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="font-light text-gray-400/80 tracking-wide uppercase text-[10px]">Wisdom</span>
-          <span className="text-amber-200/90 font-light">{character.attributes.wisdom}</span>
+          <span className="text-purple-200/90 font-light">{character.attributes.wisdom}</span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="font-light text-gray-400/80 tracking-wide uppercase text-[10px]">Charisma</span>
-          <span className="text-amber-200/90 font-light">{character.attributes.charisma}</span>
+          <span className="text-purple-200/90 font-light">{character.attributes.charisma}</span>
         </div>
       </div>
 
       {/* Elegant selection indicator */}
       {isSelected && (
-        <div className="absolute top-3 right-3 w-5 h-5 border border-amber-400/60 rounded-full flex items-center justify-center bg-amber-400/10 backdrop-blur-sm">
-          <span className="text-amber-300 text-xs">✓</span>
+        <div className="absolute top-3 right-3 w-5 h-5 border border-purple-400/60 rounded-full flex items-center justify-center bg-purple-400/10 backdrop-blur-sm">
+          <span className="text-purple-300 text-xs">✓</span>
         </div>
       )}
     </button>

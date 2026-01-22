@@ -65,25 +65,25 @@ export default function Modal({
 
       {/* Elegant Modal Content - Vogue style */}
       <div
-        className={`relative w-full ${maxWidthClasses[maxWidth]} max-h-[90vh] overflow-y-auto rounded-sm border border-amber-500/20 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-indigo-950/95 shadow-2xl animate-scale-in p-8 md:p-12 backdrop-blur-xl ${className}`}
+        className={`relative w-full ${maxWidthClasses[maxWidth]} max-h-[90vh] overflow-y-auto rounded-sm border border-purple-500/20 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-indigo-950/95 shadow-2xl animate-scale-in p-8 md:p-12 backdrop-blur-xl ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Decorative corner elements - Vogue style */}
-        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-amber-500/30"></div>
-        <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-amber-500/30"></div>
-        <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-amber-500/30"></div>
-        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-amber-500/30"></div>
+        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-purple-500/30"></div>
+        <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-purple-500/30"></div>
+        <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-purple-500/30"></div>
+        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-purple-500/30"></div>
 
         {/* Optional Header */}
         {(title || subtitle) && (
           <div className="text-center mb-10">
             {title && (
               <div className="inline-block mb-4">
-                <div className="h-px w-20 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-4"></div>
-                <h2 className="text-5xl md:text-6xl font-light tracking-[0.15em] mb-3 text-amber-50/90 uppercase">
+                <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-4"></div>
+                <h2 className="text-5xl md:text-6xl font-light tracking-[0.15em] mb-3 text-purple-50/90 uppercase">
                   {title}
                 </h2>
-                <div className="h-px w-20 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mt-4"></div>
+                <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mt-4"></div>
               </div>
             )}
             {subtitle && (

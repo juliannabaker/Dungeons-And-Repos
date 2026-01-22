@@ -31,8 +31,8 @@ export default function AppearanceSelection({
               className={`
                 relative group rounded-lg border-2 p-4 transition-all duration-300
                 ${isSelected 
-                  ? 'border-amber-500/80 bg-amber-500/10 ring-2 ring-amber-400/60 ring-offset-2 ring-offset-slate-950' 
-                  : 'border-amber-500/30 bg-transparent hover:border-amber-500/60 hover:bg-amber-500/5'
+                  ? 'border-purple-500/80 bg-purple-500/10 ring-2 ring-purple-400/60 ring-offset-2 ring-offset-slate-950' 
+                  : 'border-purple-500/30 bg-transparent hover:border-purple-500/60 hover:bg-purple-500/5'
                 }
                 transform hover:scale-[1.02] active:scale-95
               `}
@@ -51,14 +51,14 @@ export default function AppearanceSelection({
               </div>
 
               {/* Appearance Name */}
-              <h4 className="text-lg font-light tracking-wide text-center text-amber-50/90 uppercase">
+              <h4 className="text-lg font-light tracking-wide text-center text-purple-50/90 uppercase">
                 {appearance.name}
               </h4>
 
               {/* Selection Indicator */}
               {isSelected && (
-                <div className="absolute top-4 right-4 w-6 h-6 border border-amber-400/60 rounded-full flex items-center justify-center bg-amber-400/10 backdrop-blur-sm">
-                  <span className="text-amber-300 text-sm">✓</span>
+                <div className="absolute top-4 right-4 w-6 h-6 border border-purple-400/60 rounded-full flex items-center justify-center bg-purple-400/10 backdrop-blur-sm">
+                  <span className="text-purple-300 text-sm">✓</span>
                 </div>
               )}
             </button>
