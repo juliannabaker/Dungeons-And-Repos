@@ -52,7 +52,7 @@ export default function Home() {
 
           {/* DnD Story Description - Compact */}
           <div className="max-w-2xl mx-auto mt-4 px-4">
-            <div className="border-l-2 border-purple-500/30 pl-4 py-3 rounded-r-lg bg-slate-950/70 backdrop-blur-md border-r border-t border-b border-purple-500/20">
+            <div className="border-l-2 border-purple-500/30 px-4 py-3 rounded-r-lg bg-slate-950/70 backdrop-blur-md border-r border-t border-b border-purple-500/20">
               <p className="text-xs md:text-sm font-light leading-relaxed text-gray-200/90 italic mb-2">
                 In the shadowed realm where code meets legend, you stand at the threshold of an extraordinary quest.
                 The ancient repositories hold secrets untold, guarded by digital dragons and mystical algorithms.
