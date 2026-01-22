@@ -30,11 +30,11 @@ export interface SelectedCharacter extends Character {
   customName: string;
 }
 
-// Helper function to generate placeholder image URLs
-// Replace these with actual image paths when final art is ready
-const getPlaceholderImage = (characterId: string, appearanceId: string): string => {
-  // Using placeholder.com service - replace with actual image paths
-  return `https://via.placeholder.com/400x600/1a1a2e/ffffff?text=${characterId}-${appearanceId}`;
+// Helper function to get character appearance image URLs
+// Images are stored in public/assets/images/ and named by appearance id (e.g., warrior-1.png)
+const getCharacterImage = (appearanceId: string): string => {
+  // In Next.js, files in public folder are served from root
+  return `/assets/images/${appearanceId}.png`;
 };
 
 export const characters: Character[] = [
@@ -53,8 +53,8 @@ export const characters: Character[] = [
     emoji: '⚔️',
     color: 'red',
     appearances: [
-      { id: 'warrior-1', name: 'Noble Knight', imageUrl: getPlaceholderImage('warrior', '1') },
-      { id: 'warrior-2', name: 'Battle-Scarred Veteran', imageUrl: getPlaceholderImage('warrior', '2') },
+      { id: 'warrior-1', name: 'Noble Knight', imageUrl: getCharacterImage('warrior-1') },
+      { id: 'warrior-2', name: 'Battle-Scarred Veteran', imageUrl: getCharacterImage('warrior-2') },
     ],
   },
   {
@@ -72,8 +72,8 @@ export const characters: Character[] = [
     emoji: '🔮',
     color: 'blue',
     appearances: [
-      { id: 'mage-1', name: 'Arcane Scholar', imageUrl: getPlaceholderImage('mage', '1') },
-      { id: 'mage-2', name: 'Mystic Wanderer', imageUrl: getPlaceholderImage('mage', '2') },
+      { id: 'mage-1', name: 'Arcane Scholar', imageUrl: getCharacterImage('mage-1') },
+      { id: 'mage-2', name: 'Mystic Wanderer', imageUrl: getCharacterImage('mage-2') },
     ],
   },
   {
@@ -91,8 +91,8 @@ export const characters: Character[] = [
     emoji: '🗡️',
     color: 'purple',
     appearances: [
-      { id: 'rogue-1', name: 'Shadow Assassin', imageUrl: getPlaceholderImage('rogue', '1') },
-      { id: 'rogue-2', name: 'Master Thief', imageUrl: getPlaceholderImage('rogue', '2') },
+      { id: 'rogue-1', name: 'Shadow Assassin', imageUrl: getCharacterImage('rogue-1') },
+      { id: 'rogue-2', name: 'Master Thief', imageUrl: getCharacterImage('rogue-2') },
     ],
   },
   // ============================================

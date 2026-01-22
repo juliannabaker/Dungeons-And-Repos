@@ -37,13 +37,13 @@ export default function AppearanceSelection({
                 transform hover:scale-[1.02] active:scale-95
               `}
             >
-              {/* Placeholder Image */}
-              <div className="relative w-full aspect-[2/3] mb-4 rounded-lg overflow-hidden bg-slate-900/50">
+              {/* Character Image */}
+              <div className="relative w-full aspect-[2/3] mb-4 rounded-lg overflow-hidden bg-slate-900/50 flex items-center justify-center">
                 <Image
                   src={appearance.imageUrl}
                   alt={appearance.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Overlay on hover */}

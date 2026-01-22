@@ -19,14 +19,14 @@ export default function CharacterDisplay({ character }: CharacterDisplayProps) {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-indigo-500/20 rounded-full blur-2xl animate-pulse-slow-delayed"></div>
         </div>
 
-        {/* Character Image or Emoji */}
+        {/* Character Image */}
         <div className="relative w-48 h-72 md:w-64 md:h-96 mx-auto mb-4">
-          <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-amber-500/30">
+          <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-amber-500/30 flex items-center justify-center bg-slate-900/30">
             <Image
               src={character.selectedAppearance.imageUrl}
               alt={character.selectedAppearance.name}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 768px) 192px, 256px"
             />
           </div>
