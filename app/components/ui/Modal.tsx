@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import Button from './Button';
 
 interface ModalProps {
@@ -14,7 +14,11 @@ interface ModalProps {
   className?: string;
 }
 
-export default function Modal({
+export interface ModalRef {
+  scrollToTop: () => void;
+}
+
+const Modal = forwardRef<ModalRef, ModalProps>(({
   isOpen,
   onClose,
   children,
@@ -23,7 +27,14 @@ export default function Modal({
   showCloseButton = true,
   maxWidth = '6xl',
   className = '',
-}: ModalProps) {
+}, ref) => {
+  const scrollableRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    scrollToTop: () => {
+      scrollableRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+  }));
   // Handle escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -65,44 +76,47 @@ export default function Modal({
 
       {/* Elegant Modal Content - Vogue style */}
       <div
-        className={`relative w-full ${maxWidthClasses[maxWidth]} max-h-[90vh] overflow-y-auto rounded-sm border border-purple-500/20 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-indigo-950/95 shadow-2xl animate-scale-in p-8 md:p-12 backdrop-blur-xl ${className}`}
+        className={`relative w-full ${maxWidthClasses[maxWidth]} max-h-[90vh] rounded-sm border border-purple-500/20 bg-gradient-to-br from-slate-950/95 via-purple-950/95 to-indigo-950/95 shadow-2xl animate-scale-in backdrop-blur-xl ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Decorative corner elements - Vogue style */}
-        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-purple-500/30"></div>
-        <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-purple-500/30"></div>
-        <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-purple-500/30"></div>
-        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-purple-500/30"></div>
+        {/* Decorative corner elements - Vogue style (fixed to modal container) */}
+        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-purple-500/30 pointer-events-none z-10"></div>
+        <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-purple-500/30 pointer-events-none z-10"></div>
+        <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-purple-500/30 pointer-events-none z-10"></div>
+        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-purple-500/30 pointer-events-none z-10"></div>
 
-        {/* Optional Header */}
-        {(title || subtitle) && (
-          <div className="text-center mb-10">
-            {title && (
-              <div className="inline-block mb-4">
-                <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-4"></div>
-                <h2 className="text-5xl md:text-6xl font-light tracking-[0.15em] mb-3 text-purple-50/90 uppercase">
-                  {title}
-                </h2>
-                <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mt-4"></div>
-              </div>
-            )}
-            {subtitle && (
-              <p className="text-sm font-light text-gray-400/70 tracking-[0.2em] uppercase mt-6">
-                {subtitle}
-              </p>
-            )}
-          </div>
-        )}
+        {/* Scrollable content area */}
+        <div ref={scrollableRef} className="overflow-y-auto max-h-[90vh] p-8 md:p-12">
+          {/* Optional Header */}
+          {(title || subtitle) && (
+            <div className="text-center mb-10">
+              {title && (
+                <div className="inline-block mb-4">
+                  <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-4"></div>
+                  <h2 className="text-5xl md:text-6xl font-light tracking-[0.15em] mb-3 text-purple-50/90 uppercase">
+                    {title}
+                  </h2>
+                  <div className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mt-4"></div>
+                </div>
+              )}
+              {subtitle && (
+                <p className="text-sm font-light text-gray-400/70 tracking-[0.2em] uppercase mt-6">
+                  {subtitle}
+                </p>
+              )}
+            </div>
+          )}
 
-        {/* Modal Content */}
-        {children}
+          {/* Modal Content */}
+          {children}
+        </div>
 
         {/* Elegant Close Button */}
         {showCloseButton && (
           <Button
             variant="close"
             onClick={onClose}
-            className="absolute top-6 right-6"
+            className="absolute top-6 right-6 z-20"
             aria-label="Close modal"
           >
             ×
@@ -111,5 +125,9 @@ export default function Modal({
       </div>
     </div>
   );
-}
+});
+
+Modal.displayName = 'Modal';
+
+export default Modal;
 

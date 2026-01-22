@@ -4,12 +4,28 @@ import { Character, SelectedCharacter, characters } from '../types/character';
 import CharacterCard from './CharacterCard';
 import AppearanceSelection from './AppearanceSelection';
 import CharacterNaming from './CharacterNaming';
-import { useState, useEffect } from 'react';
-import Modal from './ui/Modal';
+import { useState, useEffect, useRef } from 'react';
+import Modal, { ModalRef } from './ui/Modal';
 import Button from './ui/Button';
 import ButtonGroup from './ui/ButtonGroup';
 
 type ModalStep = 'type' | 'appearance' | 'naming';
+
+// Array of fantasy character names for random selection
+const CHARACTER_NAMES = [
+  'Arannis', 'Thalira', 'Rurik', 'Fenwick', 'Seraphine',
+  'Caldor', 'Astrielle', 'Draven', 'Ysolde', 'Thorin',
+  'Lirael', 'Eldrin', 'Maelis', 'Gideon', 'Nyssa',
+  'Faelar', 'Vespera', 'Beren', 'Morwen', 'Zarek',
+  'Valen', 'Elowen', 'Dain', 'Sylvara', 'Kaelen',
+  'Aric', 'Isolde', 'Thalor', 'Mirael', 'Zephyr'
+];
+
+// Function to get a random name from the array
+const getRandomName = (): string => {
+  const randomIndex = Math.floor(Math.random() * CHARACTER_NAMES.length);
+  return CHARACTER_NAMES[randomIndex];
+};
 
 interface CharacterSelectionModalProps {
   isOpen: boolean;
@@ -28,6 +44,7 @@ export default function CharacterSelectionModal({
   const [selectedCharacterType, setSelectedCharacterType] = useState<Character | null>(null);
   const [selectedAppearance, setSelectedAppearance] = useState<Character['appearances'][0] | null>(null);
   const [customName, setCustomName] = useState('');
+  const modalRef = useRef<ModalRef>(null);
 
   // Reset state when modal opens/closes
   useEffect(() => {
@@ -39,12 +56,23 @@ export default function CharacterSelectionModal({
     }
   }, [isOpen]);
 
+  // Scroll to top when step changes
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to ensure DOM has updated
+      const timer = setTimeout(() => {
+        modalRef.current?.scrollToTop();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [currentStep, isOpen]);
+
   // Handle character type selection
   const handleTypeSelect = (characterId: string) => {
     const character = characters.find((c) => c.id === characterId);
     if (character) {
       setSelectedCharacterType(character);
-      setCustomName(character.name); // Set default name
+      setCustomName(''); // Clear name, will be set when appearance is selected
       setCurrentStep('appearance');
     }
   };
@@ -52,6 +80,8 @@ export default function CharacterSelectionModal({
   // Handle appearance selection
   const handleAppearanceSelect = (appearance: Character['appearances'][0]) => {
     setSelectedAppearance(appearance);
+    // Set a random name when appearance is selected
+    setCustomName(getRandomName());
     setCurrentStep('naming');
   };
 
@@ -119,6 +149,7 @@ export default function CharacterSelectionModal({
 
   return (
     <Modal
+      ref={modalRef}
       isOpen={isOpen}
       onClose={onClose}
       maxWidth="6xl"
@@ -207,6 +238,7 @@ export default function CharacterSelectionModal({
             characterClass={selectedCharacterType.class}
             onNameChange={handleNameChange}
             initialName={customName}
+            selectedAppearanceImageUrl={selectedAppearance?.imageUrl}
           />
         )}
       </div>
@@ -237,7 +269,7 @@ export default function CharacterSelectionModal({
               disabled={!canProceed}
               className="bg-gradient-to-r from-purple-600/80 to-purple-500/80 text-slate-950 hover:from-purple-500 hover:to-purple-400 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
             >
-              Begin Journey
+              Begin Adventure
             </Button>
           ) : (
             <Button
@@ -246,6 +278,8 @@ export default function CharacterSelectionModal({
                 if (currentStep === 'type' && selectedCharacterType) {
                   setCurrentStep('appearance');
                 } else if (currentStep === 'appearance' && selectedAppearance) {
+                  // Set a random name when moving to naming step
+                  setCustomName(getRandomName());
                   setCurrentStep('naming');
                 }
               }}

@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface CharacterNamingProps {
   defaultName: string;
   characterClass: string;
   onNameChange: (name: string) => void;
   initialName?: string;
+  selectedAppearanceImageUrl?: string;
 }
 
 export default function CharacterNaming({
@@ -14,6 +16,7 @@ export default function CharacterNaming({
   characterClass,
   onNameChange,
   initialName = '',
+  selectedAppearanceImageUrl,
 }: CharacterNamingProps) {
   const [name, setName] = useState(initialName || defaultName);
   const [error, setError] = useState('');
@@ -27,7 +30,7 @@ export default function CharacterNaming({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newName = e.target.value;
-    
+
     if (newName.length > MAX_NAME_LENGTH) {
       setError(`Name must be ${MAX_NAME_LENGTH} characters or less`);
       return;
@@ -47,21 +50,12 @@ export default function CharacterNaming({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h3 className="text-2xl md:text-3xl font-light tracking-wider text-purple-50/90 uppercase mb-2">
-          Name Your Hero
-        </h3>
-        <p className="text-sm font-light text-gray-400/70 tracking-[0.2em] uppercase">
-          Give your {characterClass} a unique identity
-        </p>
-      </div>
 
       {/* Name Input */}
       <div className="space-y-4">
         <div>
-          <label 
-            htmlFor="character-name" 
+          <label
+            htmlFor="character-name"
             className="block text-sm font-light text-gray-300/80 tracking-wide uppercase mb-2"
           >
             Character Name
@@ -88,7 +82,7 @@ export default function CharacterNaming({
             `}
             autoFocus
           />
-          
+
           {/* Character Count */}
           <div className="flex justify-between items-center mt-2">
             <div className="text-xs text-gray-400/60">
@@ -112,6 +106,17 @@ export default function CharacterNaming({
             Preview
           </p>
           <div className="px-4 py-3 rounded-sm border border-purple-500/30 bg-slate-950/30">
+            {selectedAppearanceImageUrl && (
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <Image
+                  src={selectedAppearanceImageUrl}
+                  alt={`${characterClass} preview`}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            )}
             <p className="text-lg font-light tracking-wider text-purple-50/90">
               {name.trim() || defaultName}
             </p>

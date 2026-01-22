@@ -34,7 +34,7 @@ export default function AppearanceSelection({
                   ? 'border-purple-500/80 bg-purple-500/10 ring-2 ring-purple-400/60 ring-offset-2 ring-offset-slate-950' 
                   : 'border-purple-500/30 bg-transparent hover:border-purple-500/60 hover:bg-purple-500/5'
                 }
-                transform hover:scale-[1.02] active:scale-95
+                transform hover:scale-[1.02] active:scale-95 hover:cursor-pointer
               `}
             >
               {/* Character Image */}

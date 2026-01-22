@@ -51,7 +51,7 @@ export const characters: Character[] = [
       charisma: 13,
     },
     emoji: '⚔️',
-    color: 'red',
+    color: 'indigo',
     appearances: [
       { id: 'warrior-1', name: 'Noble Knight', imageUrl: getCharacterImage('warrior-1') },
       { id: 'warrior-2', name: 'Seasoned Combatant', imageUrl: getCharacterImage('warrior-2') },
