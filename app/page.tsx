@@ -4,13 +4,15 @@ import { useState } from 'react';
 import FantasyBackground from './components/FantasyBackground';
 import CharacterSelectionModal from './components/CharacterSelectionModal';
 import CharacterDisplay from './components/CharacterDisplay';
-import { Character } from './types/character';
+import { SelectedCharacter } from './types/character';
+import Button from './components/ui/Button';
+import ButtonGroup from './components/ui/ButtonGroup';
 
 export default function Home() {
-  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+  const [selectedCharacter, setSelectedCharacter] = useState<SelectedCharacter | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSelectCharacter = (character: Character) => {
+  const handleSelectCharacter = (character: SelectedCharacter) => {
     setSelectedCharacter(character);
     setIsModalOpen(false);
   };
@@ -56,9 +58,9 @@ export default function Home() {
                 dungeons of development.
               </p>
               <p className="text-xs md:text-sm font-light leading-relaxed text-gray-300/80 italic">
-                Each character you select carries unique powers: the <span className="text-rose-300/90 font-normal">Warrior</span> with 
-                unyielding strength, the <span className="text-indigo-300/90 font-normal">Mage</span> wielding arcane knowledge, 
-                or the <span className="text-violet-300/90 font-normal">Rogue</span> moving through shadows with unmatched agility. 
+                Three paths await: the <span className="text-rose-300/90 font-normal">Warrior</span> with unyielding strength, 
+                the <span className="text-indigo-300/90 font-normal">Mage</span> wielding arcane mastery, 
+                and the <span className="text-violet-300/90 font-normal">Rogue</span> moving through shadows with unmatched precision. 
                 Choose wisely, for your companion will shape the path ahead in this realm where every commit is a spell, 
                 every pull request a quest, and every merge a battle won.
               </p>
@@ -89,21 +91,17 @@ export default function Home() {
         </div>
 
         {/* Elegant Action Buttons - Vogue style */}
-        <div className="mt-4 flex flex-col sm:flex-row gap-4">
-          <button
-            onClick={handleOpenModal}
-            className="px-10 py-4 rounded-sm border border-amber-500/40 bg-gradient-to-r from-amber-600/20 to-amber-500/20 backdrop-blur-sm text-amber-200/90 font-light tracking-wider uppercase text-xs hover:from-amber-600/30 hover:to-amber-500/30 hover:border-amber-500/60 transition-all duration-300 shadow-lg shadow-amber-500/10 hover:shadow-amber-500/20"
-          >
-            {selectedCharacter ? 'Change Hero' : 'Select Hero'}
-          </button>
-          {selectedCharacter && (
-            <button
-              onClick={() => setSelectedCharacter(null)}
-              className="px-10 py-4 rounded-sm border border-gray-500/30 bg-transparent text-gray-400/80 font-light tracking-wider uppercase text-xs hover:bg-gray-500/10 hover:border-gray-500/50 hover:text-gray-300/90 transition-all duration-300"
-            >
-              Clear
-            </button>
-          )}
+        <div className="mt-4">
+          <ButtonGroup align="center" direction="row">
+            <Button variant="primary" onClick={handleOpenModal}>
+              {selectedCharacter ? 'Change Hero' : 'Select Hero'}
+            </Button>
+            {selectedCharacter && (
+              <Button variant="secondary" onClick={() => setSelectedCharacter(null)}>
+                Clear
+              </Button>
+            )}
+          </ButtonGroup>
         </div>
 
         {/* Character Selection Modal */}

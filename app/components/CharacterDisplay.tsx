@@ -1,9 +1,10 @@
 'use client';
 
-import { Character } from '../types/character';
+import { SelectedCharacter } from '../types/character';
+import Image from 'next/image';
 
 interface CharacterDisplayProps {
-  character: Character | null;
+  character: SelectedCharacter | null;
 }
 
 export default function CharacterDisplay({ character }: CharacterDisplayProps) {
@@ -18,9 +19,17 @@ export default function CharacterDisplay({ character }: CharacterDisplayProps) {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-indigo-500/20 rounded-full blur-2xl animate-pulse-slow-delayed"></div>
         </div>
 
-        {/* Character Sprite/Emoji with mysterious glow */}
-        <div className="text-6xl md:text-8xl drop-shadow-2xl animate-bounce-slow filter drop-shadow-[0_0_20px_rgba(196,181,253,0.5)]">
-          {character.emoji}
+        {/* Character Image or Emoji */}
+        <div className="relative w-48 h-72 md:w-64 md:h-96 mx-auto mb-4">
+          <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-amber-500/30">
+            <Image
+              src={character.selectedAppearance.imageUrl}
+              alt={character.selectedAppearance.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 192px, 256px"
+            />
+          </div>
         </div>
 
         {/* Whimsical sparkles around character */}
@@ -35,10 +44,13 @@ export default function CharacterDisplay({ character }: CharacterDisplayProps) {
           <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-3"></div>
           
           <h3 className="text-xl font-light tracking-wider text-center mb-1 text-amber-50/90 uppercase">
-            {character.name}
+            {character.customName}
           </h3>
-          <p className="text-xs font-light text-center text-purple-300/70 tracking-[0.2em] uppercase mb-4">
+          <p className="text-xs font-light text-center text-purple-300/70 tracking-[0.2em] uppercase mb-1">
             {character.class}
+          </p>
+          <p className="text-xs font-light text-center text-gray-400/60 tracking-wide mb-4">
+            {character.selectedAppearance.name}
           </p>
           
           <div className="flex justify-center gap-3 text-xs border-t border-amber-500/20 pt-4">

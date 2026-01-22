@@ -1,15 +1,32 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
+interface Star {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  twinkleDelay: number;
+}
+
 export default function FantasyBackground() {
-  // Generate random stars
-  const stars = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    opacity: Math.random() * 0.8 + 0.2,
-    twinkleDelay: Math.random() * 3,
-  }));
+  // Generate random stars only on client to avoid hydration mismatch
+  const [stars, setStars] = useState<Star[]>([]);
+
+  useEffect(() => {
+    // Generate stars only on client side
+    const generatedStars = Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.8 + 0.2,
+      twinkleDelay: Math.random() * 3,
+    }));
+    setStars(generatedStars);
+  }, []);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">

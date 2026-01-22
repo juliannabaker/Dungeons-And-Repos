@@ -13,12 +13,28 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
     red: 'border-rose-600/50 bg-gradient-to-br from-rose-950/40 via-red-950/30 to-rose-900/20 hover:from-rose-950/60 hover:via-red-950/50 hover:to-rose-900/40 hover:border-rose-500/80',
     blue: 'border-indigo-600/50 bg-gradient-to-br from-indigo-950/40 via-blue-950/30 to-indigo-900/20 hover:from-indigo-950/60 hover:via-blue-950/50 hover:to-indigo-900/40 hover:border-indigo-500/80',
     purple: 'border-violet-600/50 bg-gradient-to-br from-violet-950/40 via-purple-950/30 to-violet-900/20 hover:from-violet-950/60 hover:via-purple-950/50 hover:to-violet-900/40 hover:border-violet-500/80',
+    green: 'border-emerald-600/50 bg-gradient-to-br from-emerald-950/40 via-green-950/30 to-emerald-900/20 hover:from-emerald-950/60 hover:via-green-950/50 hover:to-emerald-900/40 hover:border-emerald-500/80',
+    gold: 'border-amber-600/50 bg-gradient-to-br from-amber-950/40 via-yellow-950/30 to-amber-900/20 hover:from-amber-950/60 hover:via-yellow-950/50 hover:to-amber-900/40 hover:border-amber-500/80',
+    teal: 'border-teal-600/50 bg-gradient-to-br from-teal-950/40 via-cyan-950/30 to-teal-900/20 hover:from-teal-950/60 hover:via-cyan-950/50 hover:to-teal-900/40 hover:border-teal-500/80',
+    orange: 'border-orange-600/50 bg-gradient-to-br from-orange-950/40 via-red-950/30 to-orange-900/20 hover:from-orange-950/60 hover:via-red-950/50 hover:to-orange-900/40 hover:border-orange-500/80',
+    pink: 'border-pink-600/50 bg-gradient-to-br from-pink-950/40 via-rose-950/30 to-pink-900/20 hover:from-pink-950/60 hover:via-rose-950/50 hover:to-pink-900/40 hover:border-pink-500/80',
+    emerald: 'border-emerald-600/50 bg-gradient-to-br from-emerald-950/40 via-green-950/30 to-emerald-900/20 hover:from-emerald-950/60 hover:via-green-950/50 hover:to-emerald-900/40 hover:border-emerald-500/80',
+    indigo: 'border-indigo-600/50 bg-gradient-to-br from-indigo-950/40 via-purple-950/30 to-indigo-900/20 hover:from-indigo-950/60 hover:via-purple-950/50 hover:to-indigo-900/40 hover:border-indigo-500/80',
+    amber: 'border-amber-600/50 bg-gradient-to-br from-amber-950/40 via-yellow-950/30 to-amber-900/20 hover:from-amber-950/60 hover:via-yellow-950/50 hover:to-amber-900/40 hover:border-amber-500/80',
   };
 
   const glowClasses: Record<Character['color'], string> = {
     red: 'shadow-rose-500/20 hover:shadow-rose-500/40',
     blue: 'shadow-indigo-500/20 hover:shadow-indigo-500/40',
     purple: 'shadow-violet-500/20 hover:shadow-violet-500/40',
+    green: 'shadow-emerald-500/20 hover:shadow-emerald-500/40',
+    gold: 'shadow-amber-500/20 hover:shadow-amber-500/40',
+    teal: 'shadow-teal-500/20 hover:shadow-teal-500/40',
+    orange: 'shadow-orange-500/20 hover:shadow-orange-500/40',
+    pink: 'shadow-pink-500/20 hover:shadow-pink-500/40',
+    emerald: 'shadow-emerald-500/20 hover:shadow-emerald-500/40',
+    indigo: 'shadow-indigo-500/20 hover:shadow-indigo-500/40',
+    amber: 'shadow-amber-500/20 hover:shadow-amber-500/40',
   };
 
   const selectedClasses = isSelected
@@ -40,7 +56,7 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
     >
       {/* Mysterious background glow effect */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 to-transparent"></div>
-      
+
       {/* Whimsical sparkle effect when selected */}
       {isSelected && (
         <>
@@ -56,7 +72,7 @@ export default function CharacterCard({ character, isSelected, onSelect }: Chara
       </div>
 
       {/* Character Name - Vogue style typography */}
-      <h3 className="text-2xl font-light tracking-wider text-center mb-2 text-amber-50/90 uppercase relative z-10">
+      <h3 className="text-xl font-light tracking-wider text-center mb-2 text-amber-50/90 uppercase relative z-10">
         {character.name}
       </h3>
 
