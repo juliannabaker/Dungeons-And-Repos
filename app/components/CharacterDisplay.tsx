@@ -21,7 +21,7 @@ export default function CharacterDisplay({ character, onChangeHero, onClear }: C
         <div className="rounded-sm border border-purple-500/30 bg-gradient-to-br from-slate-950/95 via-purple-950/90 to-indigo-950/95 backdrop-blur-xl shadow-2xl p-4">
           {/* Decorative line */}
           <div className="h-px w-16 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mx-auto mb-3"></div>
-          
+
           <h3 className="text-xl font-light tracking-wider text-center mb-1 text-purple-50/90 uppercase">
             {character.customName}
           </h3>
@@ -31,7 +31,7 @@ export default function CharacterDisplay({ character, onChangeHero, onClear }: C
           <p className="text-xs font-light text-center text-gray-400/60 tracking-wide mb-4">
             {character.selectedAppearance.name}
           </p>
-          
+
           <div className="flex justify-center gap-2 text-xs border-t border-purple-500/20 pt-4 mb-4">
             <span className="px-2 py-1.5 border border-rose-500/30 bg-rose-950/30 rounded-sm text-rose-200/90 font-light tracking-wide uppercase text-[10px]">
               STR: {character.attributes.strength}
@@ -68,7 +68,7 @@ export default function CharacterDisplay({ character, onChangeHero, onClear }: C
           </div>
 
           {/* Character Image */}
-          <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-purple-500/30 flex items-center justify-center bg-slate-900/30">
+          <div className="relative w-full h-full rounded-lg overflow-hidden flex items-center justify-center">
             <Image
               src={character.selectedAppearance.frontImageUrl}
               alt={character.selectedAppearance.name}
